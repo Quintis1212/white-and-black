@@ -1,0 +1,151 @@
+
+$dark-color: #000;
+$white-color: #fff;
+$back-color: #efefef;
+$gold-color: #FFD700;
+
+$browser-context: 16; 
+
+@function rem($pixels, $context: $browser-context) 
+  @return #{$pixels/$context}rem;
+
+  
+
+
+* 
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-size: rem(19);
+
+li
+  display: inline-block;
+
+
+
+img 
+  display: block;
+  width: 100%;
+  height: auto;
+
+a 
+  color: $dark-color;
+
+.nav-wrapper
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: rem(20);
+
+
+.dropdown-content
+  display: none
+  font-size: rem(18);
+  cursor: pointer;
+  z-index: 10;
+
+
+  
+.dropdown-button
+  border: none;
+  background-color: $white-color;
+  font-size: rem(24);
+  cursor: pointer;
+  padding: rem(10);
+
+
+
+.dropdown
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &:hover
+    .dropdown-button
+      background-color: #000;
+      color: $white-color;
+      transition: 0.3s;
+
+    .dropdown-content
+      display: flex;
+      flex-direction: column;
+      position: absolute
+      top: rem(45);
+      text-align: center;
+      width: 100%;
+      text-align: center;
+      background-color: $back-color;
+      li
+        padding: rem(5);
+        a
+          display: inline;
+          padding: rem(5);
+      a:hover
+        background-color: $dark-color;
+        color: $white-color;
+        transition: 0.3s;
+
+.home-page
+  section
+    position: relative;
+    padding-bottom: rem(10);
+
+  
+.home-page-text
+  position: absolute;
+  top: 7%;
+  font-size: rem(50);
+  width: 100%;
+  text-align: center;
+  span 
+    color: $white-color;
+
+.home-page-insta
+  position: absolute;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  a 
+    flex-basis: rem(300);
+    margin-bottom: rem(30);
+    color: $dark-color;
+    text-align: center;
+    text-decoration: underline;
+
+
+.product-list-wrapper
+  width: 80%;
+  .product-card
+    width: 22%;
+    padding: rem(10);
+    display: inline-block;
+
+      
+    .product-card-info
+      display: flex;
+      justify-content: space-around;
+      padding-top: rem(10);
+    li 
+      display: block;
+      cursor: pointer;
+      &:nth-of-type(n+2)
+         border-left: 1px solid $dark-color;
+         border-right: 1px solid $dark-color;
+      &:nth-of-type(3)
+        padding-bottom: rem(10);
+        border-bottom: 1px solid $dark-color;
+      button
+        font-size: rem(12);
+        background-color: $gold-color;
+        padding: rem(5);
+      p 
+        text-align: center;
+
