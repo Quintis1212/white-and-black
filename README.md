@@ -1,3 +1,5 @@
+
+arr concatenation
 ```
 
  let b =   uniqeBrandArr.map(el=>{
