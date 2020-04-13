@@ -1,17 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import Pagination from "react-pagination-js";
+import "react-pagination-js/dist/styles.css"; 
 
 export default function ProductList() {
-  let data = useSelector(state => state.data);
+  let data = useSelector(state => state.listOfItems);
+  let history = useHistory();
+
+  let [currentPage , setCurrentPage] = useState(1)
 
 
-  let pagination = data.length
 
-  console.log(pagination)
+  function changeCurrentPage (num) {
+    setCurrentPage(num)
+  }
 
   return (
     <div className="product-list-wrapper">
-      {data.map(el => {
+      {data.slice(currentPage*12-12,currentPage*12).map(el => {
+        let item = el.id;
         return (
           <ul key={el.id} className="product-card">
             <li>
@@ -22,14 +30,36 @@ export default function ProductList() {
             </li>
 
             <li>
-              <p>{el.brand}</p>
+              <p className="product-card-brand">{el.brand}</p>
             </li>
             <li className="product-card-info">
-              <p>{el.price} $</p> <button>ADD TO BASKET</button>
+              <p>{el.price} $</p>{" "}
+              <Link to={`${history.location.pathname}/${item}`}>
+                <button className="product-card-brand">MORE INFO...</button>
+              </Link>
+
             </li>
+
           </ul>
         );
       })}
+         <div className="product-list-pagination">
+
+                      {data.length > 12 ?  ( 
+                      <Pagination   currentPage={currentPage}
+                      totalSize={data.length} 
+                      sizePerPage={12} 
+                      changeCurrentPage={changeCurrentPage} 
+                      firstPageText="first" 
+                      lastPageText="last" 
+                      showFirstLastPages={true} 
+                      nextPageText="next"
+                      previousPageText="prev"
+                      />
+                      ) : null}
+
+                </div>
     </div>
   );
 }
+

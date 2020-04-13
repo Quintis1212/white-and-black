@@ -2,8 +2,8 @@
 $dark-color: #000;
 $white-color: #fff;
 $back-color: #efefef;
-$gold-color: #FFD700;
-
+$chekmark : #eee;
+$chekmark-hover: #ccc;
 $browser-context: 16; 
 
 @function rem($pixels, $context: $browser-context) 
@@ -101,6 +101,7 @@ a
   text-align: center;
   span 
     color: $white-color;
+    font-size: rem(50);
 
 .home-page-insta
   position: absolute;
@@ -120,32 +121,147 @@ a
     text-align: center;
     text-decoration: underline;
 
+button
+  font-size: rem(12);
+  border: 1px solid $dark-color;
+  background-color: $white-color;
+  padding: rem(5);
+  cursor: pointer;
+  &:hover
+    background-color: $dark-color;
+    color: $white-color;
+    transition: 0.3s;
+    cursor: pointer;
 
+.disabled
+  background-color: $back-color;
+  &:hover
+    background-color: $back-color;
+    color: $dark-color;
+
+.search-page
+  display: flex;
+  justify-content: space-between;
+  padding: 0 rem(10);
 .product-list-wrapper
   width: 80%;
   .product-card
     width: 22%;
-    padding: rem(10);
+    margin: rem(10);
     display: inline-block;
-
-      
+    transition: all .2s ease-in-out;
+    &:hover
+      transform: scale(1.03);
+    .product-card-brand
+      padding: rem(5);
     .product-card-info
       display: flex;
-      justify-content: space-around;
-      padding-top: rem(10);
+      justify-content: space-between;
+      align-items: center;
+      padding: rem(10) rem(10);
     li 
       display: block;
-      cursor: pointer;
+      text-align: center;
       &:nth-of-type(n+2)
          border-left: 1px solid $dark-color;
          border-right: 1px solid $dark-color;
       &:nth-of-type(3)
         padding-bottom: rem(10);
         border-bottom: 1px solid $dark-color;
-      button
-        font-size: rem(12);
-        background-color: $gold-color;
-        padding: rem(5);
+
       p 
         text-align: center;
 
+
+
+.filter-section
+  display: flex;
+  flex-direction: column;
+  width:  12%;
+  padding-left: rem(48);
+  padding-top: rem(9);
+
+.filter-section-heading
+  padding-bottom: rem(12);
+
+
+//////////////////// input chekbox ///////////////
+
+.filter-section-container 
+  display: inline;
+  position: relative;
+  padding-left: rem(35);
+  font-size: rem(22);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: rem(12);
+  label
+    cursor: pointer;
+
+
+.filter-section-container  input 
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+
+.checkmark 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: rem(25);
+  width: rem(25);
+  background-color: $chekmark ;
+
+
+.filter-section-container:hover input ~ .checkmark 
+  background-color: $chekmark-hover;
+
+.filter-section-container  input:checked ~ .checkmark 
+  background-color: $dark-color;
+
+
+.checkmark:after 
+  content: "";
+  position: absolute;
+  display: none;
+
+
+.filter-section-container  input:checked ~ .checkmark:after 
+  display: block;
+
+.filter-section-container  .checkmark:after 
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  //////////////////////////////////////////////////////////////////////////////
+
+.rc-slider-track, .rc-slider-track-1
+   background-color:  $dark-color;
+
+.rc-slider-handle
+  border: solid 2px $dark-color;
+
+.price-range-info
+  padding-bottom:  rem(7) ;
+
+#added-button
+  background-color: $back-color;
+  &:hover
+    color: $dark-color;
+
+.product-list-pagination
+  text-align: center;
+  padding-top: rem(20);
+  padding-bottom: rem(35);

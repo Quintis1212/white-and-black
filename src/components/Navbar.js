@@ -15,11 +15,10 @@ export default function Navbar() {
 
        <DropDownBTN title="MAN" />
 
-        <NavButton title="BLOG" path='home-page' />
 
-        <NavButton title="BASKET" path='home-page'  />
+        <NavButton title="BASKET" path='basket'  />
 
-       <NavButton title="LOG IN/LOG OUT" />
+       <NavButton title="LOG IN/LOG OUT" path='authorisation' />
       </nav>
     </header>
   );

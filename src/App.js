@@ -9,28 +9,25 @@ import {
   Redirect
 } from "react-router-dom";
 import './Styles.css';
-// import { useSelector,useDispatch } from 'react-redux';
+import ProductPage from './pages/ProductPage';
+import Basket from './pages/Basket';
+import Authorisation from './pages/Authorisation';
+
 
 
 function App() {
-  // let data = useSelector(state => state)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   // Обновляем заголовок документа с помощью API браузера
-  //   console.log('use effect')
-  //   dispatch({type:'SET-DATA'})
-  // });
 
   return (
     <Router>
       <Navbar/>
       <Switch>
+      <Redirect from="*//*" to="*/*" />
     <Route exact path="/home-page" component={HomePage}  />
     <Route exact path="/search/:searchParams" component={SearchPage}  />
-    {/* <Route exact path="/blog" component={BlogPage}  />
-    <Route exact path="/authorisation" component={BlogPage}  />
-    <Route exact path="/item/:slug" component={ProductPge}  /> */}
-    <Redirect exact from="" to="/home-page" />
+    <Route exact path="/basket" component={Basket}  />
+     <Route exact path="/authorisation" component={Authorisation}  /> 
+    <Route exact path="/search/:searchParams/:item" component={ProductPage}  />
+    <Redirect exact from="/" to="/home-page" />
     </Switch>
     </Router>
   );

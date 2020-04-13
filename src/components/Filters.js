@@ -1,63 +1,84 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import PriceRangeFilter from "./PriceRangeFilter";
 
 export default function Filters() {
+  const dispatch = useDispatch();
 
-    let data=useSelector(state=>state.data)
+  let data = useSelector(state => state.data);
 
-    function filterSetter(data){
-        let uniqeSizeArr = []
+  let brand = useSelector(state => state.brand)
 
-        let uniqeBrandArr = []
-
-        let minMaxPrice = []
-
-        data.forEach(el=>{
-            el.size.forEach(size=>{
-                if (uniqeSizeArr.indexOf(size) === -1){
-                    uniqeSizeArr.push(size)
-                }
-            })
-            if ( uniqeBrandArr.indexOf(el.brand) === -1){
-                uniqeBrandArr.push(el.brand)
-            }
-            if ( minMaxPrice.indexOf(el.price) === -1){
-                minMaxPrice.push(el.price)
-            }
-
-        })
-
-        let min = Math.min(...minMaxPrice)
-        let max = Math.max(...minMaxPrice)
-
-        minMaxPrice = [min,max]
+  let size = useSelector(state => state.size)
 
 
-        console.log(uniqeSizeArr)
-        console.log(uniqeBrandArr)
-        console.log(minMaxPrice)
-        
- let b =   uniqeBrandArr.map(el=>{
-              return <p>{el}</p>
-             })
+  function filtersSetter(data) {
+    let uniqeSizeArr = [];
 
-             
-let c =  uniqeSizeArr.map(el=>{
-                return <p>{el}</p>
-               })
+    let uniqeBrandArr = [];
 
-               let a = [b,c]
-               return a
-             
+    data.forEach(el => {
+      el.size.forEach(size => {
+        if (uniqeSizeArr.indexOf(size) === -1) {
+          uniqeSizeArr.push(size);
+        }
+      });
+      if (uniqeBrandArr.indexOf(el.brand) === -1) {
+        uniqeBrandArr.push(el.brand);
+      }
+    });
 
-    }
+    let filterMenuBrand = ["BRAND:", ...uniqeBrandArr].map((el, i) => {
+      return el === "BRAND:" ? (
+        <h4 className="filter-section-heading" key={i}>
+          {el}
+        </h4>
+      ) : (
+        <span key={i} className="filter-section-container">
+          <label>
+            {el}
+            <input
+              type="checkbox"
+              checked={brand.includes(el)}
+              onChange={() => {
+                dispatch({ type: "FILTERING-LIST", brand: el });
+              }}
+            />
+            <span className="checkmark"></span>
+          </label>
+        </span>
+      );
+    });
 
-    filterSetter(data)
+    let filterMenuSize = ["SIZE:", ...uniqeSizeArr].map((el, i) => {
+      return el === "SIZE:" ? (
+        <h4 className="filter-section-heading" key={Math.random()}>
+          {el}
+        </h4>
+      ) : (
+        <span key={Math.random()} className="filter-section-container">
+          <label>
+            {el}
+            <input
+              type="checkbox"
+              checked={size.includes(el)}
+              onChange={() => {
+                dispatch({ type: "FILTERING-LIST", size: el });
+              }}
+            />
+            <span className="checkmark"></span>
+          </label>
+        </span>
+      );
+    });
 
-    return (
-        <div >
-{   filterSetter(data)}
+    return [...filterMenuBrand, ...filterMenuSize];
+  }
 
-        </div>
-    )
+  return (
+    <div className="filter-section">
+      {filtersSetter(data)}
+      <PriceRangeFilter />
+    </div>
+  );
 }
