@@ -12,6 +12,8 @@ import './Styles.css';
 import ProductPage from './pages/ProductPage';
 import Basket from './pages/Basket';
 import Authorisation from './pages/Authorisation';
+import OrderSended from './pages/OrderSended';
+import OrderSending from './pages/OrderSending';
 
 
 
@@ -25,6 +27,8 @@ function App() {
     <Route exact path="/home-page" component={HomePage}  />
     <Route exact path="/search/:searchParams" component={SearchPage}  />
     <Route exact path="/basket" component={Basket}  />
+    <Route exact path="/order-sended" component={OrderSended}  />
+    <Route exact path="/order-sending" component={OrderSending}  />
      <Route exact path="/authorisation" component={Authorisation}  /> 
     <Route exact path="/search/:searchParams/:item" component={ProductPage}  />
     <Redirect exact from="/" to="/home-page" />

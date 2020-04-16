@@ -435,7 +435,223 @@ let objData = {
               brand: "Faballey",
               isAdded: false
             },
-      
+      //////////////////////////////// MAN /////////////////////////
+      {
+        id: "12frw123q123",
+        gender: "man",
+        typeClothes: "jeans",
+        size:['S','M','L','XL','XXL'],
+        price: 200,
+        description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+        brand: "Armani",
+        isAdded: false
+      },
+      {
+          id: "12sde2123121q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['S','M','XL','XXL'],
+          price: 300,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Colins",
+          isAdded: false
+        },
+        {
+          id: "13dwa21fqwezc23121q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['S','M','XL','XXL'],
+          price: 400,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Mango",
+          isAdded: false
+        },
+  
+        {
+          id: "12q1fqwezc231dws21q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['S','M','XL','XXL'],
+          price: 500,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Colins",
+          isAdded: false
+        },
+        {
+          id: "12q1778312111dwa1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['S','M','XL','XXL'],
+          price: 500,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Armani",
+          isAdded: false
+        },
+  
+        {
+          id: "12q112dwas12q11q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['M','XL','XXL'],
+          price: 1400,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Mango",
+          isAdded: false
+        },
+  
+        {
+          id: "12q1984121q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['M','XL','XXL','L'],
+          price: 700,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Armani",
+          isAdded: false
+        },
+        {
+          id: "1266693",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['L','XL','XXL'],
+          price: 800,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Armani",
+          isAdded: false
+        },
+        {
+          id: "12111231zizaa23",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['L','XXL'],
+          price: 350,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Colins",
+          isAdded: false
+        },
+        {
+          id: "12qfqwezchustfqwezcqq1_3121q1",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['L','XL','XXL','M'],
+          price: 700,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Mango",
+          isAdded: false
+        },
+        {
+          id: "12kopi23123",
+          gender: "man",
+          typeClothes: "jeans",
+          size:['S','M','XXL'],
+          price: 200,
+          description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+          brand: "Armani",
+          isAdded: false
+        },
+        {
+            id: "121miras121q1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['S','M','XL'],
+            price: 300,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Colins",
+            isAdded: false
+          },
+          {
+            id: "121fshvecen23121q1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['S','M','XL','XXL'],
+            price: 400,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Mango",
+            isAdded: false
+          },
+    
+          {
+            id: "12q13africa1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['S','M','XL','XXL'],
+            price: 500,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Colins",
+            isAdded: false
+          },
+          {
+            id: "12qeuro3rq1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['S','M','XL','XXL'],
+            price: 500,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Armani",
+            isAdded: false
+          },
+    
+          {
+            id: "12q1timet21q1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['M','XL','XXL'],
+            price: 1400,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Mango",
+            isAdded: false
+          },
+    
+          {
+            id: "12q1pipid231q1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['M','XL','L'],
+            price: 700,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Armani",
+            isAdded: false
+          },
+          {
+            id: "12ukozru23",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['L','XL'],
+            price: 800,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Armani",
+            isAdded: false
+          },
+          {
+            id: "121beriserdeza23",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['L','XXL'],
+            price: 350,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Colins",
+            isAdded: false
+          },
+          {
+            id: "12q3queedswe",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['L','XL','M'],
+            price: 700,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Mango",
+            isAdded: false
+          },
+          {
+            id: "12q35p35pq11q123sa1q1",
+            gender: "man",
+            typeClothes: "jeans",
+            size:['L','XL','M'],
+            price: 450,
+            description: "obscurus dsfklsdmfkdsf sdopfkspdo fkposkdf odsfkopsdkf",
+            brand: "Armani",
+            isAdded: false
+          },
     
 
 

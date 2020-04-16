@@ -61,11 +61,30 @@ a {
   position: relative;
 }
 
+.dropdown .dropdown-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #000;
+  border-radius: 50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .dropdown:hover .dropdown-button {
   background-color: #000;
   color: #fff;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.dropdown:hover .dropdown-label {
+  background-color: #fff;
+  color: #000;
 }
 
 .dropdown:hover .dropdown-content {
@@ -342,5 +361,104 @@ button:hover {
   text-align: center;
   padding-top: 1.25rem;
   padding-bottom: 2.1875rem;
+}
+
+.product-item {
+  padding: 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.product-item img {
+  width: 30%;
+}
+
+.product-item-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.product-item-list li {
+  padding: 0.625rem 2.5rem;
+}
+
+.comments p {
+  padding-left: 11.25rem;
+}
+
+.basket {
+  padding: 2.5rem;
+}
+
+.basket h3 {
+  padding-bottom: 1.25rem;
+}
+
+.basket-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 1.25rem;
+}
+
+.basket-list li {
+  padding-right: 3.125rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.basket-user-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.basket-user-data input {
+  margin: 0.9375rem 0;
+  width: 25%;
+}
+
+.basket-user-data button {
+  width: 25%;
+}
+
+::-webkit-input-placeholder {
+  font-size: 14px;
+}
+
+:-ms-input-placeholder {
+  font-size: 14px;
+}
+
+::-ms-input-placeholder {
+  font-size: 14px;
+}
+
+::placeholder {
+  font-size: 14px;
+}
+
+.order-sended {
+  padding: 2.5rem;
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -13,7 +13,8 @@ export default function ProductList() {
 
 
   function changeCurrentPage (num) {
-    setCurrentPage(num)
+    setCurrentPage(num);
+    window.scrollTo(0, 0)
   }
 
   return (

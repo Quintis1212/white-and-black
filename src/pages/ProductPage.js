@@ -30,14 +30,20 @@ export default function ProductPage() {
     }
 
     return (
+        <>
         <div className="product-item">
-                    <ul>
+                          <img
+                src="https://images.ctfassets.net/04kqfsuq4bba/5nmLOIBQHXZxbYepc9Ecmv/a46396138eb1b80a346f7c6fdf2dc66d/shallow-focus-photo-of-man-wearing-black-bucket-hat-2315313.jpg"
+                alt="clothes-foto"
+              />
+                    <ul className="product-item-list">
 
-                    <li><h2>{item.brand}</h2></li>
+                    <li ><h2>{item.brand}</h2></li>
                     <li> <p>{item.gender+" "+item.typeClothes}</p></li>
                     <li> <p>{item.price} $</p></li>
+                    <li><p>{item.description}</p></li>
                     <li>
-                    <label htmlFor="size">Choose a size:</label>
+                    <label htmlFor="size">Choose your size:</label>
                     <select onChange={(e)=>setSize(e.target.value)} id="size">
                         {item.size.map(el=>{
 
@@ -45,7 +51,6 @@ export default function ProductPage() {
                         })}
                     </select>
                     </li>
-                    <li><p>{item.description}</p></li>
                     <li>
                     <button  onClick={addToBasket} >ADD TO BASKET</button>
                     </li>
@@ -56,8 +61,15 @@ export default function ProductPage() {
                     </li>
 
                     </ul>
+                
 
         </div>
+        <div className="comments">
+            <p>
+                Comments :
+            </p>
+        </div>
+        </>
     )
 }
 

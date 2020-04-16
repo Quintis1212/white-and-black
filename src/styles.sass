@@ -62,11 +62,29 @@ a
   display: flex;
   flex-direction: column;
   position: relative;
+  .dropdown-label
+    position: absolute;
+    top: 0 ;
+    right: 0 ;
+    background-color: $dark-color;
+    border-radius: 50%;
+    width: rem(18);
+    height: rem(18);
+    text-align: center;
+    color: $white-color;
+    font-size: 14px;
+    line-height: 1.5;
   &:hover
     .dropdown-button
       background-color: #000;
       color: $white-color;
       transition: 0.3s;
+    .dropdown-label
+      background-color: $white-color;
+      color: $dark-color;
+
+
+
 
     .dropdown-content
       display: flex;
@@ -265,3 +283,51 @@ button
   text-align: center;
   padding-top: rem(20);
   padding-bottom: rem(35);
+
+.product-item
+  padding: rem(20);
+  display: flex;
+  justify-content: center;
+  img 
+    width: 30%;
+
+.product-item-list
+  display: flex;
+  flex-direction: column;
+  li
+    padding: rem(10) rem(40);
+
+.comments
+  p 
+    padding-left: rem(180);
+
+.basket
+  padding: rem(40);
+  h3 
+    padding-bottom: rem(20);
+
+
+.basket-list
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: rem(20);
+  li
+    padding-right: rem(50);  
+    flex: 1;
+
+.basket-user-data
+  display: flex;
+  flex-direction: column;
+  input
+    margin: rem(15) 0;
+    width: 25%;
+  button 
+    width: 25%;
+
+::placeholder 
+  font-size: 14px;
+
+.order-sended
+  padding: rem(40);
+  text-align: center;

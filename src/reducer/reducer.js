@@ -206,6 +206,13 @@ let copyData = [...state.data]
             size:[],
             price:[],
           }
+
+          case "CLEAR-BASKET":
+
+            return {
+              ...state,
+              basketList:[],
+            }
   
     default:
       return state;
