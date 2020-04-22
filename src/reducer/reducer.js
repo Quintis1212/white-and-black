@@ -213,6 +213,33 @@ let copyData = [...state.data]
               ...state,
               basketList:[],
             }
+
+          case "LOGGED":
+            console.log(' logged')
+            console.log(action.user)
+            return {
+              ...state,
+              userAuth:action.user
+            }
+          case "LOG-OUT":
+            console.log('log - out')
+            return {
+              ...state,
+              userAuth:null,
+            }
+          case "QUANTITY":
+            let id = action.id;
+            let quantityItems = action.quantity;
+
+            let updateQuantity = state.basketList.map(el=>{
+              return el.id === id ? {...el,quantity:quantityItems}: el
+            })
+
+
+              return {
+                ...state,
+                basketList:updateQuantity ,
+              }
   
     default:
       return state;

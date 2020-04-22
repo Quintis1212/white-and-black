@@ -8,7 +8,11 @@ export default function BasketList() {
 
     function deleteItem (id) {
         dispatch({type:'DELETE-ITEM',id:id});
+    }
 
+    function quantityHandler (id,quantity) {
+        console.log(id,quantity);
+        dispatch({type:'QUANTITY',id:id,quantity:quantity});
     }
 
     return (
@@ -26,7 +30,13 @@ export default function BasketList() {
                             <li><p>{el.typeClothes}</p></li>
                             <li><p>size: {el.size}</p></li>
                             <li><p>{el.price} $</p></li>
-                            <li><p>quantity : {el.quantity}</p></li>
+                            <li>
+                                <p>quantity : </p>
+                                <input type="text" 
+                                    onChange={(e)=>quantityHandler(el.id ,e.target.value)}
+                                    value={el.quantity}></input>
+                                
+                                </li>
                             <li><p>sum :{el.price*el.quantity}$</p></li>
                             <li>
                     <button  onClick={()=>deleteItem(el.id)} >DELETE</button>

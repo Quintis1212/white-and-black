@@ -652,12 +652,6 @@ let objData = {
             brand: "Armani",
             isAdded: false
           },
-    
-
-
-
-
-
 
   ],
   data: [],
@@ -665,6 +659,7 @@ let objData = {
  size:[],
  price:[],
  basketList:[],
+ userAuth:null,
 };
 
 export default objData;
