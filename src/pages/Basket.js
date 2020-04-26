@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Basket() {
     let basketList = useSelector(state => state.basketList);
+    let userAuth = useSelector(state => state.userAuth);
     let [phoneNumber , setPhoneNumber] = useState('')
     let [userName , setUserName] = useState('')
     let history = useHistory()
@@ -47,11 +48,11 @@ export default function Basket() {
             placeholder="380 XX XXX XX XX"
             onChange={(e)=>setPhoneNumber(e.target.value)}
             required
-            value={phoneNumber}></input>
+            value={userAuth? userAuth.photoURL: phoneNumber}></input>
             <label htmlFor="name">Your name: </label>
             <input type="text" id="name" name="name" 
             onChange={(e)=>setUserName(e.target.value)}
-            value={userName}
+            value={userAuth? userAuth.displayName : userName}
             placeholder="Your name"
             required></input>
             <button  className="dropdown-button" type="submit">SEND ORDER</button>

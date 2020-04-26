@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import firebase from 'firebase/app'
 import 'firebase/auth';
-import {  useSelector, useDispatch } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 
 
@@ -9,13 +9,19 @@ export default function Authorisation() {
     let [password ,setPassword] = useState('123456')
     let [email, setEmail] = useState('frey1@meta.ua')
     let userAuth = useSelector(state => state.userAuth)
-    let dispatch = useDispatch()
     let [updateEmail , setUpdateEmail] = useState('')
+    let [name , setName] = useState('');
+    let [phoneNumber,setPhoneNumber] = useState('');
 
     function logInHandler () {
           const auth = firebase.auth()
           const promise = auth.signInWithEmailAndPassword(email,password)
-          promise.catch(err => console.log(err))
+          promise.catch(err =>{  
+                console.log(err.message)
+                if (err.message === "There is no user record corresponding to this identifier. The user may have been deleted."){
+                    alert('There is no user record corresponding to this email, please sign up')
+                }
+             })
 
     }
 
@@ -24,43 +30,79 @@ export default function Authorisation() {
         const promise = auth.createUserWithEmailAndPassword(email,password)
         promise
             .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .catch(err => { 
+                alert(err)
+                console.log(err)})
     }
 
     function logOutHandler(){
         firebase.auth().signOut()
     }
 
-    function sendEmailVerification() {
-        let  currentUser = firebase.auth().currentUser;
 
-        currentUser.sendEmailVerification().then(function() {
-            let check = firebase.auth().currentUser
-            if (check.emailVerified){
-                dispatch({type:'LOGGED',user:check})
-            }
-        }).catch(function(error) {
-                console.log(error)      
-         });
-    }
     function  updateEmailHandler (email) {
-        let  user = firebase.auth().currentUser;
-        user.updateEmail(email).then(function() {
-        // Update successful.
-        document.location.reload(true)
+        if (validateEmail(email)) { 
+            let  user = firebase.auth().currentUser;
+            user.updateEmail(email).then(function() {
+            // Update successful.
+            document.location.reload(true)
+    
+            }).catch(function(error) {
+            // An error happened.
+            console.log(error)
+            });
+        } else {
+            alert('Wrong email')
+        }
 
-        }).catch(function(error) {
-        // An error happened.
-        });
 
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
     
-  
+    function updateNameHandler (name) {
+        if (name.trim() !== '' ) {
+            let  user = firebase.auth().currentUser;
+            user.updateProfile({
+                displayName: name,
+              }).then(function() {
+                document.location.reload(true)
+              }).catch(function(error) {
+                  console.log(error)
+                  alert('Please , try again later')
+              });
+        } else {
+            alert('Type one or more characters')
+        }
+
+    }
+
+    function updatePhoneHandler (phoneNumber) {
+        let check = phoneNumber.split('').every(el=>  el >= 0)
+        console.log(phoneNumber.split(''))
+        console.log(check)
+        if (phoneNumber.length < 10 || !check){
+            alert('Telephone number must have at least 10 number characters')
+            return
+        }
+        let  user = firebase.auth().currentUser;
+        user.updateProfile({
+            photoURL: phoneNumber,
+          }).then(function() {
+            document.location.reload(true)
+          }).catch(function(error) {
+              console.log(error)
+              alert('Please , try again later')
+          });
+    }
+
 
     return (
         <div>
             Authorisation page
-
 
             {!userAuth && <>
                 <input type="email"
@@ -82,28 +124,42 @@ export default function Authorisation() {
 
             {userAuth && <button onClick={logOutHandler}>LOG OUT </button>}
 
-            {userAuth && userAuth.emailVerified !== true &&
-            <div>
-              <button onClick={sendEmailVerification}>SEND EMAIL TO VERIFY  </button>
-                    <p>After verify please reload page to see the changes</p>
-            </div>
-            }
-            {userAuth && userAuth.emailVerified === true &&
-            <p>Your email verified</p>
-            }
+            
                 {userAuth && userAuth.email &&
-                <p>your email is : {userAuth.email}</p> 
-
+                <p>Your email is : {userAuth.email}</p> 
+                
                 }
             {userAuth && 
             <div>
         <input type="email" placeholder="email" value={updateEmail} onChange={(e)=>setUpdateEmail(e.target.value)} ></input>
 
-            <button onClick={()=>updateEmailHandler(updateEmail)}>UPDATE EMAIL  </button>
+            <button onClick={()=>updateEmailHandler(updateEmail)}>SET EMAIL  </button>
 
             </div>
-
             }
+
+            {userAuth && 
+            <>
+               {userAuth.displayName === null? <p>Set your name:</p> : <p>Your name:{userAuth.displayName}</p>}
+<input type="name" placeholder="name" value={name} onChange={(e)=>setName(e.target.value)} ></input>
+
+<button onClick={()=>updateNameHandler(name)}>SET NAME </button>
+
+</>
+            }
+
+{userAuth && 
+            <>
+               {userAuth.photoURL === null? <p>Set your phone number:</p> : <p>Your number:{userAuth.photoURL}</p>}
+<input id="tel" type="tel" placeholder="phone number" value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} ></input>
+
+<button onClick={()=>updatePhoneHandler(phoneNumber)}>SET NUMBER </button>
+
+</>
+            }
+
+            
+
         </div>
     )
 }
