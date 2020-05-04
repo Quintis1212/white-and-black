@@ -663,3 +663,9 @@ let objData = {
 };
 
 export default objData;
+
+do {
+  alert(4)
+}
+
+while(false)

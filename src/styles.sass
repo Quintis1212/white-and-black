@@ -297,10 +297,6 @@ button
   li
     padding: rem(10) rem(40);
 
-.comments
-  p 
-    padding-left: rem(180);
-
 .basket
   padding: rem(40);
   text-align: center;
@@ -421,3 +417,31 @@ button
   50% 
     transform: scale(1.5);
   
+.comments
+  padding: rem(50) rem(200)  rem(150) rem(200);
+  .comments-list
+    padding: rem(10);
+    margin-bottom: rem(5);
+    background-color: $back-color;
+    h4 
+      padding-bottom: rem(10);
+  .comment-text 
+    padding: rem(7);
+
+.authorisation-page,.password-reset-email
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+.authorisation-page > *,.password-reset-email>*
+  padding: rem(5);
+  margin: rem(5);
+
+.logged-page
+  display: flex;
+  flex-direction: column;
+
+.logged-page > *
+  padding: rem(5);
+  margin: rem(5);
+

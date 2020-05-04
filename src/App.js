@@ -17,7 +17,7 @@ import OrderSending from './pages/OrderSending';
 import firebase from 'firebase/app'
 import 'firebase/auth';
 import { useDispatch } from 'react-redux';
-
+import PasswordReset from './pages/PasswordReset'
 
 
 function App() {
@@ -61,7 +61,8 @@ function App() {
     <Route exact path="/basket" component={Basket}  />
     <Route exact path="/order-sended" component={OrderSended}  />
     <Route exact path="/order-sending" component={OrderSending}  />
-     <Route exact path="/authorisation" component={Authorisation}  /> 
+    <Route exact path="/authorisation" component={Authorisation}  />
+    <Route exact path="/authorisation/sendPasswordResetEmail" component={PasswordReset}  /> 
     <Route exact path="/search/:searchParams/:item" component={ProductPage}  />
     <Redirect exact from="/" to="/home-page" />
     </Switch>

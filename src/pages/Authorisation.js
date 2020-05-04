@@ -1,167 +1,82 @@
-import React, { useState } from 'react';
-import firebase from 'firebase/app'
-import 'firebase/auth';
-import {  useSelector } from 'react-redux';
-
-
+import React, { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import validateEmail from "../Auxiliar/ValidateEmail";
+import LoggedUser from "../components/LoggedUser";
 
 export default function Authorisation() {
-    let [password ,setPassword] = useState('123456')
-    let [email, setEmail] = useState('frey1@meta.ua')
-    let userAuth = useSelector(state => state.userAuth)
-    let [updateEmail , setUpdateEmail] = useState('')
-    let [name , setName] = useState('');
-    let [phoneNumber,setPhoneNumber] = useState('');
+  let [password, setPassword] = useState("");
+  let [email, setEmail] = useState("");
+  let userAuth = useSelector((state) => state.userAuth);
 
-    function logInHandler () {
-          const auth = firebase.auth()
-          const promise = auth.signInWithEmailAndPassword(email,password)
-          promise.catch(err =>{  
-                console.log(err.message)
-                if (err.message === "There is no user record corresponding to this identifier. The user may have been deleted."){
-                    alert('There is no user record corresponding to this email, please sign up')
-                }
-             })
-
+  function logInHandler() {
+    const auth = firebase.auth();
+    if (validateEmail(email) && password.length >= 6) {
+      const promise = auth.signInWithEmailAndPassword(email, password);
+      promise.then(setPassword("")).catch((err) => {
+        alert(err.message);
+      });
+    } else if (!validateEmail(email)) {
+      alert("The email is not correct");
+    } else if (password.length < 6) {
+      alert("The password must have 6 characters");
     }
+  }
 
-    function singUpHandler () {
-        const auth = firebase.auth()
-        const promise = auth.createUserWithEmailAndPassword(email,password)
-        promise
-            .then(res => console.log(res))
-            .catch(err => { 
-                alert(err)
-                console.log(err)})
+  function singUpHandler() {
+    if (validateEmail(email) && password.length >= 6) {
+      const auth = firebase.auth();
+      const promise = auth.createUserWithEmailAndPassword(email, password);
+      promise
+        .then((res) => {
+          setPassword("");
+          console.log(res);
+        })
+        .catch((err) => {
+          alert(err);
+          console.log(err);
+        });
+    } else if (!validateEmail(email)) {
+      alert("The email is not correct");
+    } else if (password.length < 6) {
+      alert("The password must have 6 characters");
     }
+  }
 
-    function logOutHandler(){
-        firebase.auth().signOut()
-    }
+  return (
+    <div className="authorisation-page">
+        {!userAuth && <>
+            <h2>Authorisation page</h2>
+      <p>Please type your email and password to log in or to sign up!</p>
+        </>}
 
-
-    function  updateEmailHandler (email) {
-        if (validateEmail(email)) { 
-            let  user = firebase.auth().currentUser;
-            user.updateEmail(email).then(function() {
-            // Update successful.
-            document.location.reload(true)
-    
-            }).catch(function(error) {
-            // An error happened.
-            console.log(error)
-            });
-        } else {
-            alert('Wrong email')
-        }
-
-
-    }
-
-    function validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-    
-    function updateNameHandler (name) {
-        if (name.trim() !== '' ) {
-            let  user = firebase.auth().currentUser;
-            user.updateProfile({
-                displayName: name,
-              }).then(function() {
-                document.location.reload(true)
-              }).catch(function(error) {
-                  console.log(error)
-                  alert('Please , try again later')
-              });
-        } else {
-            alert('Type one or more characters')
-        }
-
-    }
-
-    function updatePhoneHandler (phoneNumber) {
-        let check = phoneNumber.split('').every(el=>  el >= 0)
-        console.log(phoneNumber.split(''))
-        console.log(check)
-        if (phoneNumber.length < 10 || !check){
-            alert('Telephone number must have at least 10 number characters')
-            return
-        }
-        let  user = firebase.auth().currentUser;
-        user.updateProfile({
-            photoURL: phoneNumber,
-          }).then(function() {
-            document.location.reload(true)
-          }).catch(function(error) {
-              console.log(error)
-              alert('Please , try again later')
-          });
-    }
-
-
-    return (
-        <div>
-            Authorisation page
-
-            {!userAuth && <>
-                <input type="email"
-                 placeholder="email" 
-                 value={email} onChange={(e)=>setEmail(e.target.value)}
-                 
-                 ></input>
-            <input type="password" 
-            placeholder="password" 
-            value={password} 
-            onChange={(e)=>setPassword(e.target.value)} 
-             ></input>
-            </>}
-            
-            {!userAuth && <>
-                <button onClick={logInHandler}>LOG IN</button>
-                <button onClick={singUpHandler}>SING UP </button>
-            </>}
-
-            {userAuth && <button onClick={logOutHandler}>LOG OUT </button>}
-
-            
-                {userAuth && userAuth.email &&
-                <p>Your email is : {userAuth.email}</p> 
-                
-                }
-            {userAuth && 
-            <div>
-        <input type="email" placeholder="email" value={updateEmail} onChange={(e)=>setUpdateEmail(e.target.value)} ></input>
-
-            <button onClick={()=>updateEmailHandler(updateEmail)}>SET EMAIL  </button>
-
-            </div>
-            }
-
-            {userAuth && 
-            <>
-               {userAuth.displayName === null? <p>Set your name:</p> : <p>Your name:{userAuth.displayName}</p>}
-<input type="name" placeholder="name" value={name} onChange={(e)=>setName(e.target.value)} ></input>
-
-<button onClick={()=>updateNameHandler(name)}>SET NAME </button>
-
-</>
-            }
-
-{userAuth && 
-            <>
-               {userAuth.photoURL === null? <p>Set your phone number:</p> : <p>Your number:{userAuth.photoURL}</p>}
-<input id="tel" type="tel" placeholder="phone number" value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)} ></input>
-
-<button onClick={()=>updatePhoneHandler(phoneNumber)}>SET NUMBER </button>
-
-</>
-            }
-
-            
-
-        </div>
-    )
+      {!userAuth && (
+        <>
+          <input
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+          <button onClick={logInHandler}>LOG IN</button>
+          <p>or</p>
+          <button onClick={singUpHandler}>SING UP </button>
+          <Link to={`/authorisation/sendPasswordResetEmail`}>
+            <button className="product-card-brand">
+              FORGET YOUR PASSWORD ...
+            </button>
+          </Link>
+        </>
+      )}
+      <LoggedUser />
+    </div>
+  );
 }
-
-

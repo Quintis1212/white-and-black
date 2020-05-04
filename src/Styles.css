@@ -391,10 +391,6 @@ button:hover {
   padding: 0.625rem 2.5rem;
 }
 
-.comments p {
-  padding-left: 11.25rem;
-}
-
 .basket {
   padding: 2.5rem;
   text-align: center;
@@ -599,5 +595,56 @@ button:hover {
     -webkit-transform: scale(1.5);
             transform: scale(1.5);
   }
+}
+
+.comments {
+  padding: 3.125rem 12.5rem 9.375rem 12.5rem;
+}
+
+.comments .comments-list {
+  padding: 0.625rem;
+  margin-bottom: 0.3125rem;
+  background-color: #efefef;
+}
+
+.comments .comments-list h4 {
+  padding-bottom: 0.625rem;
+}
+
+.comments .comment-text {
+  padding: 0.4375rem;
+}
+
+.authorisation-page, .password-reset-email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.authorisation-page > *, .password-reset-email > * {
+  padding: 0.3125rem;
+  margin: 0.3125rem;
+}
+
+.logged-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.logged-page > * {
+  padding: 0.3125rem;
+  margin: 0.3125rem;
 }
 /*# sourceMappingURL=styles.css.map */

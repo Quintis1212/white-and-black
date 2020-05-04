@@ -216,7 +216,6 @@ let copyData = [...state.data]
 
           case "LOGGED":
             console.log(' logged')
-            console.log(action.user)
             return {
               ...state,
               userAuth:action.user
