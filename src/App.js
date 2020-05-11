@@ -9,15 +9,17 @@ import {
   Redirect
 } from "react-router-dom";
 import './Styles.css';
-import ProductPage from './pages/ProductPage';
+import ProductPageWrapper from './pages/ProductPageWrapper';
 import Basket from './pages/Basket';
 import Authorisation from './pages/Authorisation';
 import OrderSended from './pages/OrderSended';
 import OrderSending from './pages/OrderSending';
 import firebase from 'firebase/app'
 import 'firebase/auth';
+import 'firebase/storage'; 
 import { useDispatch } from 'react-redux';
-import PasswordReset from './pages/PasswordReset'
+import PasswordReset from './pages/PasswordReset';
+import axios from 'axios'
 
 
 function App() {
@@ -43,9 +45,17 @@ function App() {
     });
   }
 
+
   useEffect(() => {
     firebase.initializeApp(firebaseConfig)
     const unsubscribe = onAuthStateChange()
+    axios.get('https://white-and-black-349d9.firebaseio.com/data.json')
+    .then(res=> {
+        dispatch({type:'SET-DATA-FROM-SERVER',data:res.data})
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
     return () => {
         unsubscribe();
       }
@@ -63,7 +73,7 @@ function App() {
     <Route exact path="/order-sending" component={OrderSending}  />
     <Route exact path="/authorisation" component={Authorisation}  />
     <Route exact path="/authorisation/sendPasswordResetEmail" component={PasswordReset}  /> 
-    <Route exact path="/search/:searchParams/:item" component={ProductPage}  />
+    <Route exact path="/search/:searchParams/:item" component={ProductPageWrapper}  />
     <Redirect exact from="/" to="/home-page" />
     </Switch>
     </Router>

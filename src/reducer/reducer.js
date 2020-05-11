@@ -4,10 +4,24 @@ import objData from "../data";
 
 function reducer(state = objData, action) {
   switch (action.type) {
+    case 'SET-DATA-FROM-SERVER':
+      
+      let data1 = action.data
+      console.log({...state,staticData:data1})
+
+      return {...state,staticData:data1};
     case "SET-DATA":
       return state;
+    case "SET-PAGE-NUMBER":
+      let num = action.numOfPage
+      return {...state,numOfPage:num};
+    case "PRODUCT-PAGE":
+      let page = action.productPage
+      return {...state,productPage:page};
+
     case "FILTERING-DATA":
       let dispatchedFilters = action.filters;
+      console.log(state)
 
       let data = [...state.staticData];
 
