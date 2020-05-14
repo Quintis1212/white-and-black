@@ -22,7 +22,7 @@ export default function BasketList() {
                         <ul key={el.id} className="basket-list" >
                             <li>
                             <img
-                src="https://images.ctfassets.net/04kqfsuq4bba/5nmLOIBQHXZxbYepc9Ecmv/a46396138eb1b80a346f7c6fdf2dc66d/shallow-focus-photo-of-man-wearing-black-bucket-hat-2315313.jpg"
+                src={el.img}
                 alt="clothes-foto"
               />
                             </li>

@@ -18,13 +18,13 @@ export default function ProductList() {
 
   return (
     <div className="product-list-wrapper">
-      {data.slice(numOfPage*12-12,numOfPage*12).map(el => {
+      { data.length > 12 ?data.slice(numOfPage*12-12,numOfPage*12).map(el => {
         let item = el.id;
         return (
           <ul key={el.id} className="product-card">
             <li>
               <img
-                src={el.img || "https://images.ctfassets.net/04kqfsuq4bba/5nmLOIBQHXZxbYepc9Ecmv/a46396138eb1b80a346f7c6fdf2dc66d/shallow-focus-photo-of-man-wearing-black-bucket-hat-2315313.jpg"}
+                src={el.img}
                 alt="clothes-foto"
               />
             </li>
@@ -42,7 +42,35 @@ export default function ProductList() {
 
           </ul>
         );
-      })}
+      }):
+      (
+        data.map(el => {
+          let item = el.id;
+          return (
+            <ul key={el.id} className="product-card">
+              <li>
+                <img
+                  src={el.img}
+                  alt="clothes-foto"
+                />
+              </li>
+  
+              <li>
+                <p className="product-card-brand">{el.brand}</p>
+              </li>
+              <li className="product-card-info">
+                <p>{el.price} $</p>{" "}
+                <Link to={`${history.location.pathname}/${item}`}>
+                  <button className="product-card-brand">MORE INFO...</button>
+                </Link>
+  
+              </li>
+  
+            </ul>
+          );
+        })
+      )
+      }
          <div className="product-list-pagination">
 
                       {data.length > 12 ?  ( 
