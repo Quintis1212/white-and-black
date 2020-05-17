@@ -736,5 +736,30 @@ button:hover {
   .basket-user-data input, .basket-user-data button {
     width: 80%;
   }
+  button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  .dropdown:hover .dropdown-button {
+    background-color: #fff;
+    color: #000;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+  .dropdown-for-mobile {
+    display: none;
+  }
+  .show {
+    display: block;
+    text-align: center;
+  }
+  .show a {
+    display: block;
+    padding: 0.625rem;
+    background-color: #efefef;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

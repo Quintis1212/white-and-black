@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DropDownMenu from './DropDownMenu';
 import { useSelector } from 'react-redux';
 
 
 export default function DropDownBTN(props) {
   let data = useSelector(state => state)
+  let [show , setShow] = useState(false)
+
+  function showBlock (){
+    setShow(!show)
+  }
     return (
-        <span className="dropdown">
-          <button className="dropdown-button">{props.title}</button>
-          <DropDownMenu gender={props.title.toLowerCase()} data={data} />
+        <span onClick={showBlock} className="dropdown">
+          <button className="dropdown-button" >{props.title}</button>
+          <DropDownMenu classNameProps={show?('show'): ''} gender={props.title.toLowerCase()} data={data} />
         </span>
     )
 }

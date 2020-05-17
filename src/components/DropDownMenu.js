@@ -23,7 +23,7 @@ export default function DropDownMenu(props) {
     }
 
     return (
-        <ul className="dropdown-content">
+        <ul className={window.matchMedia('(max-width: 400px)').matches?"dropdown-for-mobile "+props.classNameProps: "dropdown-content"}>
         {menuItemList()}
           </ul>
     )

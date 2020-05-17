@@ -19,7 +19,7 @@ import 'firebase/auth';
 import 'firebase/storage'; 
 import { useDispatch } from 'react-redux';
 import PasswordReset from './pages/PasswordReset';
-import axios from 'axios'
+import axios from './axios'
 
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     firebase.initializeApp(firebaseConfig)
     const unsubscribe = onAuthStateChange()
-    axios.get('https://white-and-black-349d9.firebaseio.com/data.json')
+    axios.get('/data.json')
     .then(res=> {
         dispatch({type:'SET-DATA-FROM-SERVER',data:res.data})
     })

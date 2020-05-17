@@ -46,8 +46,6 @@ a
   cursor: pointer;
   z-index: 10;
 
-
-  
 .dropdown-button
   border: none;
   background-color: $white-color;
@@ -500,3 +498,22 @@ button
     padding: rem(20);
   .basket-user-data input, .basket-user-data button
     width: 80%;
+  button:hover
+    background-color: $white-color;
+    color: $dark-color;
+  .dropdown:hover .dropdown-button 
+    background-color: $white-color;
+    color: $dark-color;
+    transition: 0.3s;
+  .dropdown:hover .dropdown-content
+    display: none;
+  .dropdown-for-mobile
+    display: none;
+  .show
+    display: block;
+    text-align: center;
+    a 
+      display: block;
+      padding: rem(10);
+      background-color: $back-color;
+    

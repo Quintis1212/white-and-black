@@ -53,6 +53,9 @@ export default function ProductPage() {
     function addToBasket(){
         let itemCopy = {...item,size:size,quantity:1};
      dispatch({type:'ADD-TO-BASKET',productItem:itemCopy});
+     if(window.matchMedia('(max-width: 400px)').matches){
+         alert('Item is added to basket !')
+     }
     }
 
     function sendComment () {
