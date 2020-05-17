@@ -647,4 +647,94 @@ button:hover {
   padding: 0.3125rem;
   margin: 0.3125rem;
 }
+
+@media screen and (max-width: 400px) {
+  #root {
+    width: 100%;
+  }
+  #root input {
+    border: 1px solid;
+  }
+  .nav-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .home-page-text {
+    font-size: 0.75rem;
+  }
+  .home-page-text span {
+    font-size: 0.75rem;
+  }
+  .home-page-insta a {
+    font-size: 0.5rem;
+    -ms-flex-preferred-size: 3.125rem;
+        flex-basis: 3.125rem;
+  }
+  .search-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .product-list-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+  .product-list-wrapper .product-card {
+    width: 95%;
+    margin: 1.25rem 0;
+  }
+  .react-pagination-js-default a {
+    font-size: 0.75rem;
+  }
+  .filter-section {
+    width: 65%;
+  }
+  .filter-section-container {
+    margin-bottom: 1.25rem;
+  }
+  .product-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .product-item img {
+    width: 100%;
+  }
+  .product-item-list li {
+    padding: 0.9375rem 0.3125rem;
+  }
+  .comments {
+    padding: 0.9375rem 0.9375rem;
+    text-align: center;
+  }
+  .comments .comment-text {
+    width: 80%;
+    border: 1px solid #efefef;
+    margin: 0.9375rem 0;
+  }
+  .dropdown .dropdown-label {
+    right: 63px;
+  }
+  .basket-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1.25rem;
+  }
+  .basket-list li {
+    padding: 0.3125rem;
+  }
+  .basket {
+    padding: 1.25rem;
+  }
+  .basket-user-data input, .basket-user-data button {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

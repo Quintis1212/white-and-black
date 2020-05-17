@@ -14,7 +14,7 @@ export default function PriceRangeFilter() {
   let selectedPriceArray = useSelector(state => state.selectedPrice);
 
   return (
-    <div>
+    <div className="price-filter">
       <p className="price-range-info">Min price:{selectedPriceArray[0]} $ </p>
       <p className="price-range-info">Max price:{selectedPriceArray[1]} $</p>
       <Range

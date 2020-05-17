@@ -16,7 +16,7 @@ export default function BasketList() {
     }
 
     return (
-        <div>
+        <>
             {basketList.map(el=>{
                     return (
                         <ul key={el.id} className="basket-list" >
@@ -45,6 +45,6 @@ export default function BasketList() {
 
                     )
             })}
-        </div>
+        </>
     )
 }

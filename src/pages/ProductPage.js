@@ -120,7 +120,7 @@ export default function ProductPage() {
                 <p>{commentList[el]['comment']}</p>
                          </div>
             })}
-            <textarea className="comment-text" rows="5" cols="90"
+            <textarea className="comment-text" rows="5" cols="90" placeholder="type comment here"
             value={comment} onChange={(e)=>setComment(e.target.value)}></textarea>
             <button onClick={sendComment}>SEND COMMENT</button>
         </div>
