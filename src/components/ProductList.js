@@ -5,7 +5,7 @@ import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css"; 
 
 export default function ProductList() {
-  let data = useSelector(state => state.listOfItems);
+  let data = useSelector(state => state.listOfItems) || [];
   let numOfPage = useSelector(state => state.numOfPage);
   let dispatch = useDispatch()
   let history = useHistory();

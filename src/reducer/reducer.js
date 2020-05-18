@@ -7,8 +7,6 @@ function reducer(state = objData, action) {
     case 'SET-DATA-FROM-SERVER':
       
       let data1 = action.data
-      console.log({...state,staticData:data1})
-
       return {...state,staticData:data1};
     case "SET-DATA":
       return state;
@@ -21,8 +19,6 @@ function reducer(state = objData, action) {
 
     case "FILTERING-DATA":
       let dispatchedFilters = action.filters;
-      console.log(state)
-
       let data = [...state.staticData];
 
       dispatchedFilters.forEach(filterOBJ => {
@@ -235,7 +231,6 @@ let copyData = [...state.data]
               userAuth:action.user
             }
           case "LOG-OUT":
-            console.log('log - out')
             return {
               ...state,
               userAuth:null,

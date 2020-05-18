@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from "react-redux";
 export default function PriceRangeFilter() {
   const dispatch = useDispatch();
 
-  let price = useSelector(state => state.price);
+  const price = useSelector(state => state.price);
 
-  let minPrice = price[0];
-  let maxPrice = price[1];
+  const minPrice = price[0];
+  const maxPrice = price[1];
 
-  let selectedPriceArray = useSelector(state => state.selectedPrice);
+  const defaultRange = [minPrice, maxPrice];
+  const selectedPriceArray = useSelector(state => state.selectedPrice) || defaultRange;
 
   return (
     <div className="price-filter">

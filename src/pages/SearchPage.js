@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useParams } from 'react-router-dom';
 import { useDispatch, useStore, useSelector } from 'react-redux';
 import ProductList from '../components/ProductList';
@@ -16,20 +16,22 @@ export default function SearchPage() {
     
     let location = useParams().searchParams.split("-")
 
-    if (data.length) {
-    dispatch({type:'FILTERING-DATA',filters:[{gender:location[0]},{typeClothes:location[1]}]})
-    
+    useEffect(() => {
+        if (data.length) {
+            dispatch({type:'FILTERING-DATA',filters:[{gender:location[0]},{typeClothes:location[1]}]})
+            
 
-    if (filtersFromState && filtersFromState[0].gender === location[0] && filtersFromState[1].typeClothes === location[1]){
-        dispatch({ type: "FILTERING-LIST"});
-        dispatch({ type: "FILTERING-LIST", selectedPrice: selectedPrice })
-    } else { 
-        dispatch({type:'SET-PAGE-NUMBER',numOfPage:1});
-        dispatch({type:"CLEAR-FILTERS"});
-        dispatch({ type: "FILTERING-LIST"});
-        
-    }
-    }
+            if (filtersFromState && filtersFromState[0].gender === location[0] && filtersFromState[1].typeClothes === location[1]){
+                dispatch({ type: "FILTERING-LIST"});
+                dispatch({ type: "FILTERING-LIST", selectedPrice: selectedPrice })
+            } else { 
+                dispatch({type:'SET-PAGE-NUMBER',numOfPage:1});
+                dispatch({type:"CLEAR-FILTERS"});
+                dispatch({ type: "FILTERING-LIST"});
+                
+            }
+        }
+    }, [ location, filtersFromState, selectedPrice, data.length, dispatch ]);
 
     let arrLength = data.length;
 

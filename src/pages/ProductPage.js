@@ -31,10 +31,12 @@ export default function ProductPage() {
 
     
     let pathProduct= backLinkPath+itemID
+    React.useEffect(()=>{
     if (productPage !== pathProduct ) {
         dispatch({ type: "PRODUCT-PAGE", productPage:pathProduct })
         window.scrollTo(0,0)
     }
+},[productPage,pathProduct,dispatch])
 
     React.useEffect(()=>{
 
