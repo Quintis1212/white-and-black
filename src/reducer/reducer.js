@@ -13,10 +13,9 @@ function reducer(state = objData, action) {
     case "SET-PAGE-NUMBER":
       let num = action.numOfPage
       return {...state,numOfPage:num};
-    case "PRODUCT-PAGE":
-      let page = action.productPage
-      return {...state,productPage:page};
-
+    case 'SCROLL-POSITION':
+      let scrollPosition = action.scrollY
+      return {...state,scrollY:scrollPosition};
     case "FILTERING-DATA":
       let dispatchedFilters = action.filters;
       let data = [...state.staticData];

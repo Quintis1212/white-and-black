@@ -3,6 +3,7 @@ import { useLocation, Link} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux';
 import axios from '../axios';
 
+
 export default function ProductPage() {
     const dispatch = useDispatch()
     let location =useLocation()
@@ -13,7 +14,6 @@ export default function ProductPage() {
     let data = useSelector(state => state.staticData)
     let userAuth = useSelector(state => state.userAuth)
     let [initFetch,setInitFetch]=useState(null)
-    let productPage=useSelector(state=> state.productPage)
 
     
     if (data.length){
@@ -30,13 +30,10 @@ export default function ProductPage() {
     let [size , setSize] = useState(item.size[0])
 
     
-    let pathProduct= backLinkPath+itemID
     React.useEffect(()=>{
-    if (productPage !== pathProduct ) {
-        dispatch({ type: "PRODUCT-PAGE", productPage:pathProduct })
         window.scrollTo(0,0)
-    }
-},[productPage,pathProduct,dispatch])
+    
+},[])
 
     React.useEffect(()=>{
 
@@ -82,13 +79,15 @@ export default function ProductPage() {
         }
 
     }
+
     return (<>
         
         <div className="product-item">
-                          <img
-                src={item.img || "https://images.ctfassets.net/04kqfsuq4bba/5nmLOIBQHXZxbYepc9Ecmv/a46396138eb1b80a346f7c6fdf2dc66d/shallow-focus-photo-of-man-wearing-black-bucket-hat-2315313.jpg"}
-                alt="clothes-foto"
-              />
+                    <img
+                        
+                    src={item.img}
+                    alt="clothes-foto"
+                    />
                     <ul className="product-item-list">
 
                     <li ><h2>{item.brand}</h2></li>

@@ -24,6 +24,9 @@ export default function ProductList() {
           <ul key={el.id} className="product-card">
             <li>
               <img
+              onLoad={() => {
+                console.log("loaded");
+              }}
                 src={el.img}
                 alt="clothes-foto"
               />
