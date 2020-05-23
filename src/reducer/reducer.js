@@ -188,12 +188,8 @@ let copyData = [...state.data]
               }
 
           }
-          console.log(keysArr)
         }
-        
-        console.log(item)
-
-        
+                
         return {
           ...state,
           basketList:item,
