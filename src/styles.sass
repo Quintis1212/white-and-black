@@ -108,7 +108,36 @@ a
     position: relative;
     padding-bottom: rem(10);
 
+.img-visible 
+  opacity: 1;
+
+.home-page-gears
+  text-align: center;
+  animation: backgroundAnimation 1s infinite 
+
+
   
+@keyframes backgroundAnimation 
+  0% 
+    background-color: #EBEDEF;
+  15%
+    background-color: #D5DBDB;
+  55%
+    background-color: #F8F9F9;
+  70% 
+    background-color: #D6DBDF;
+  80% 
+    background-color: #EAECEE;
+
+
+
+
+.img-hidden 
+  opacity: 0;
+  
+.hide-absoluts
+  opacity: 0;
+
 .home-page-text
   position: absolute;
   top: 7%;
@@ -170,6 +199,7 @@ button
       transform: scale(1.03);
     .product-card-brand
       padding: rem(5);
+ 
     .product-card-info
       display: flex;
       justify-content: space-between;
@@ -442,6 +472,8 @@ button
 .logged-page > *
   padding: rem(5);
   margin: rem(5);
+
+
 
 @media  screen and (max-width: 400px) 
   #root 

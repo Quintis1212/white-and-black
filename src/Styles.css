@@ -124,6 +124,60 @@ a {
   padding-bottom: 0.625rem;
 }
 
+.img-visible {
+  opacity: 1;
+}
+
+.home-page-gears {
+  text-align: center;
+  -webkit-animation: backgroundAnimation 1s infinite;
+          animation: backgroundAnimation 1s infinite;
+}
+
+@-webkit-keyframes backgroundAnimation {
+  0% {
+    background-color: #EBEDEF;
+  }
+  15% {
+    background-color: #D5DBDB;
+  }
+  55% {
+    background-color: #F8F9F9;
+  }
+  70% {
+    background-color: #D6DBDF;
+  }
+  80% {
+    background-color: #EAECEE;
+  }
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #EBEDEF;
+  }
+  15% {
+    background-color: #D5DBDB;
+  }
+  55% {
+    background-color: #F8F9F9;
+  }
+  70% {
+    background-color: #D6DBDF;
+  }
+  80% {
+    background-color: #EAECEE;
+  }
+}
+
+.img-hidden {
+  opacity: 0;
+}
+
+.hide-absoluts {
+  opacity: 0;
+}
+
 .home-page-text {
   position: absolute;
   top: 7%;

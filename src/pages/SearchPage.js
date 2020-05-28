@@ -19,7 +19,6 @@ export default function SearchPage() {
 
     const listener = useCallback((e)=>{
             let scrollPosition = window.scrollY
-            console.log(scrollPosition)
             dispatch({type:'SCROLL-POSITION',scrollY:scrollPosition})
     },[dispatch])
     

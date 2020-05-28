@@ -4,21 +4,16 @@ import PriceRangeFilter from "./PriceRangeFilter";
 
 export default function Filters() {
   const dispatch = useDispatch();
-
-  let data = useSelector(state => state.data);
-
-  let brand = useSelector(state => state.brand)
-
-  let size = useSelector(state => state.size)
-
+  let data = useSelector((state) => state.data);
+  let brand = useSelector((state) => state.brand);
+  let size = useSelector((state) => state.size);
 
   function filtersSetter(data) {
     let uniqeSizeArr = [];
-
     let uniqeBrandArr = [];
 
-    data.forEach(el => {
-      el.size.forEach(size => {
+    data.forEach((el) => {
+      el.size.forEach((size) => {
         if (uniqeSizeArr.indexOf(size) === -1) {
           uniqeSizeArr.push(size);
         }
@@ -28,49 +23,36 @@ export default function Filters() {
       }
     });
 
-    let filterMenuBrand = ["BRAND:", ...uniqeBrandArr].map((el, i) => {
-      return el === "BRAND:" ? (
-        <h4 className="filter-section-heading" key={i}>
-          {el}
-        </h4>
-      ) : (
-        <span key={i} className="filter-section-container">
-          <label>
-            {el}
-            <input
-              type="checkbox"
-              checked={brand.includes(el)}
-              onChange={() => {
-                dispatch({ type: "FILTERING-LIST", brand: el });
-              }}
-            />
-            <span className="checkmark"></span>
-          </label>
-        </span>
-      );
-    });
+    function filterMenuParse(property, arrayOfValues, reduxStateOfProperty) {
+      let arrayOfValuesToHTML = arrayOfValues.map((el) => {
+        return (
+          <span key={Math.random()} className="filter-section-container">
+            <label>
+              {el}
+              <input
+                type="checkbox"
+                checked={reduxStateOfProperty.includes(el)}
+                onChange={() => {
+                  dispatch({ type: "FILTERING-LIST", [property]: el });
+                }}
+              />
+              <span className="checkmark"></span>
+            </label>
+          </span>
+        );
+      });
 
-    let filterMenuSize = ["SIZE:", ...uniqeSizeArr].map((el, i) => {
-      return el === "SIZE:" ? (
+      let filterHeading = (
         <h4 className="filter-section-heading" key={Math.random()}>
-          {el}
+          {property.toUpperCase()}
         </h4>
-      ) : (
-        <span key={Math.random()} className="filter-section-container">
-          <label>
-            {el}
-            <input
-              type="checkbox"
-              checked={size.includes(el)}
-              onChange={() => {
-                dispatch({ type: "FILTERING-LIST", size: el });
-              }}
-            />
-            <span className="checkmark"></span>
-          </label>
-        </span>
       );
-    });
+
+      return [filterHeading, ...arrayOfValuesToHTML];
+    }
+
+    let filterMenuBrand = filterMenuParse("brand", uniqeBrandArr, brand);
+    let filterMenuSize = filterMenuParse("size", uniqeSizeArr, size);
 
     return [...filterMenuBrand, ...filterMenuSize];
   }
