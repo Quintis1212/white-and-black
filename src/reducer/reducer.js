@@ -5,9 +5,10 @@ import objData from "../data";
 function reducer(state = objData, action) {
   switch (action.type) {
     case 'SET-DATA-FROM-SERVER':
-      
-      let data1 = action.data
-      return {...state,staticData:data1};
+      let dataFromServer = action.data
+      let concatData = [...state.staticData,...dataFromServer]
+      console.log(concatData)
+      return {...state,staticData:concatData};
     case "SET-DATA":
       return state;
     case "SET-PAGE-NUMBER":
