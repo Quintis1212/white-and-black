@@ -90,3 +90,39 @@ To prevent compression effect while images is loading  I used useRef to get curr
   }, []);
 ```
 This useEffect function is from component that can post new product items to  firebase database.If user downloaded image to firebase storage and do not posted item with this image to database,  when user go to other page,cleanup  function runs and delete image by current url from firestore.
+
+4) for await for download data from a list of url
+```
+ async function modernPromise() {
+      let promises = [
+        axios.get("/data.json").then((res) => {
+          return res.data
+        })
+        .catch(function (error) {
+          console.log(error);
+        }),
+
+        axios
+          .get("https://train-39df7.firebaseio.com/data.json")
+          .then((res) => {
+            let data = res.data
+            let resToArr = Object.keys(data).map(key =>{
+              console.log({...data[key],id:key})
+              return {...data[key],id:key}
+            })
+            return resToArr
+          })
+          .catch(function (error) {
+            console.log(error);
+          }),
+      ];
+
+      for await (const promise of promises) {
+
+        console.log(promise)
+       dispatch({ type: "SET-DATA-FROM-SERVER", data: promise});
+
+      }
+    }
+```
+In function modern Promise I downloaded items from two different url in a modern way.One url can be changed in admin-panel, second is a static, to demonstrate that admin panel works 
