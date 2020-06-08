@@ -78,3 +78,15 @@ export default function ProductCardInList({ el }) {
 
 To prevent compression effect while images is loading  I used useRef to get current li tag width and through useLayoutEffect set the heigth to li element and run loading animation
 
+3) useRef in useEffect to get current value in cleanup function
+```
+  useEffect(() => {
+    return () => {
+      console.log(imgRef.current)
+      if (imgRef.current){
+        deleteItem(null,imgRef.current)
+      }
+    };
+  }, []);
+```
+This useEffect function is from component that can post new product items to  firebase database.If user downloaded image to firebase storage and do not posted item with this image to database,  when user go to other page,cleanup  function runs and delete image by current url from firestore.
