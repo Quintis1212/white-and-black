@@ -1,5 +1,7 @@
 Hello everyone!This is overview solved cases with witch i countered during building this app.
+
 Admin panel for this store - https://quintis1212.github.io/admin-panel/build/index.html#/active-items
+
 You can add item that you whant to see on this store - https://quintis1212.github.io/white-and-black/build/index.html#/home-page
 
 1) useMemo with firebase initialization:
