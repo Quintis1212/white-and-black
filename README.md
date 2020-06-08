@@ -22,6 +22,7 @@ Hello everyone!This is overview solved cases with witch i countered during build
   }, [firebaseConfig]);  
   ```
 To prevent errors of firebase initialization in admin-panel for this store I used useMemo to save initial value of firebaseConfig
+
 2) useRef and useLayoutEffect for loading animations:
 ```
 import React, { useState,useLayoutEffect } from "react";
