@@ -1,4 +1,4 @@
-Hello everyone!This is overview solved cases with witch i countered during building this app.
+Hello everyone!This is overview of solved cases witch I solved during building this store and admin panel.
 
 Admin panel for this store - https://quintis1212.github.io/admin-panel/build/index.html#/active-items
 
