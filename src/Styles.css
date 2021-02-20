@@ -130,8 +130,8 @@ a {
 
 .home-page-gears {
   text-align: center;
-  -webkit-animation: backgroundAnimation 1s infinite;
-          animation: backgroundAnimation 1s infinite;
+  -webkit-animation: backgroundAnimation 3s infinite;
+          animation: backgroundAnimation 3s infinite;
 }
 
 @-webkit-keyframes backgroundAnimation {
